@@ -6,6 +6,6 @@ table.table.table-hover.mt-4
     td = @task.name
   tr 
     th = Task.human_attribute_name(:content)
-    td = @task.content
+    td = simple_format(h(@task.content))
 
-
+= link_to "タスク一覧に戻る", tasks_path, class:"btn btn-primary"

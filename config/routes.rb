@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users , except:[:edit, :update]
+  end
   root 'tasks#index'
 
   resources :tasks

@@ -1,0 +1,12 @@
+h1 = @user.name
+
+table.table.table-hover.mt-4
+  tr
+    th = User.human_attribute_name(:name)
+    td = @user.name
+  tr 
+    th = User.human_attribute_name(:email)
+    td = @user.email
+  
+
+= link_to "戻る", admin_users_path, class:"btn btn-primary"

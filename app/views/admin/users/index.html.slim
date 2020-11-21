@@ -1,0 +1,14 @@
+h1 ユーザー一覧
+
+table.table.table-hover.mt-4
+  thead.thead-default
+    tr
+      th = User.human_attribute_name(:name)
+      th = User.human_attribute_name(:content)
+      th = 
+  tbody
+  -@users.each do |user|
+    tr 
+      td = user.name
+      td = user.email
+      td = link_to "削除", admin_user_path(user), method: :delete, data:{confirm:"#{user.name}を削除しますか？"}, class:"btn btn-danger"

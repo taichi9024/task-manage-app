@@ -10,4 +10,6 @@ html
   body
   .navbar-nav.bg-light.ml-3 Task
   .container
-    = yield
+    - if flash.notice.present?
+      .alert-success = flash.notice 
+  = yield
