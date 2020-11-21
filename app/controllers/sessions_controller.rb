@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       logger.debug "sessionID = #{session[:user_id].inspect}"
       flash.notice = "#{@user.name}がログインしました"
 
-      redirect_to admin_users_path
+      redirect_to tasks_path
     end
   end
 

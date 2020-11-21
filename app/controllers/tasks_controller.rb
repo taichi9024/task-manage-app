@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :login_first
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
     if @task.save
       flash.notice = "#{@task.name}を登録しました"
       redirect_to @task
@@ -15,19 +15,19 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.recent
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
   end
 
   def edit
-    @task = Task.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
   end
 
   def update
-    @task = Task.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
     if @task.update(task_params)
       flash.now[:notice] = "#{@task.name}を編集しました"
       redirect_to @task
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
     @task.destroy
     redirect_to tasks_path
   end
@@ -45,6 +45,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :content)
+    params.require(:task).permit(:name, :content, :user_id)
   end
 end
