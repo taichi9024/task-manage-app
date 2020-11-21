@@ -1,0 +1,11 @@
+h1 Task詳細
+
+table.table.table-hover.mt-4
+  tr
+    th = Task.human_attribute_name(:name)
+    td = @task.name
+  tr 
+    th = Task.human_attribute_name(:content)
+    td = @task.content
+
+

@@ -1,0 +1,5 @@
+ja:
+  attributes:
+    name: "タスク名"
+    content: "詳細"
+    created_at: "登録日時"

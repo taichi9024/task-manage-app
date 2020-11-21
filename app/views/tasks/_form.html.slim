@@ -1,0 +1,8 @@
+= form_with model:task, local:true do |f|
+  .form-group
+    = f.label:name, "タスク名"
+    = f.text_field:name, class:"form-control"
+  .form-group
+    = f.label:content, "詳細"
+    = f.text_field:content, class:"form-control"
+    = f.submit "登録する", class:"btn btn-primary mt-2"
