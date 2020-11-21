@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  root 'sessions#new'
+
   namespace :admin do
     resources :users , except:[:edit, :update]
   end
-  root 'tasks#index'
-
   resources :tasks
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get "/login" =>'sessions#new'
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy" 
 end

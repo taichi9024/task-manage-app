@@ -10,6 +10,12 @@ html
   body
   .navbar-nav.bg-light.ml-3 Task
   .container
+    - if current_user
+      = link_to "ログアウト", logout_path, method: :delete, data:{confirm:"ログアウトします？よろしいですか？"}, class:"btn btn-primary"
+
+    - else
+
     - if flash.notice.present?
       .alert-success = flash.notice 
+
   = yield

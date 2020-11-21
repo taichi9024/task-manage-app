@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :login_first
   def new
     @task = Task.new
   end

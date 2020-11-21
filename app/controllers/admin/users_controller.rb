@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :login_first
+  before_action :admin?
   def new
     @user = User.new
   end
